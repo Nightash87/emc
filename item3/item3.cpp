@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <cassert>
-#include "../shared/get_name.h"
 
 using std::cout;
 using std::endl;
