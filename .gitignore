@@ -1,0 +1,8 @@
+#ignore vs trival file_formate
+*.sdf
+*.opensdf
+*.suo
+*.orig
+
+Debug/
+Release/ 
