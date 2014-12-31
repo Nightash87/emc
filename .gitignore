@@ -3,6 +3,8 @@
 *.opensdf
 *.suo
 *.orig
+*.exe
+*.vcxproj.user
 
 Debug/
 Release/ 
