@@ -36,7 +36,8 @@ int main(void)
 	auto& refV = GetValueByRef(ivec,4);
 	refV = 500;
 	cout << "refV:	" << type_id_with_cvr<decltype(refV)>().pretty_name() << '\n';
-	cout<<" size of int*:"<<sizeof(int *)<<'\n';
+	cout<<"size of int*:"<<sizeof(int *)<<'\n';
+
 	return 0;
 }
 
