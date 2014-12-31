@@ -5,6 +5,12 @@
 *.orig
 *.exe
 *.vcxproj.user
+*.out
+*.cmake
+err.log
+CMakeFiles/
+CMakeCache.txt
+Makefile
 
 Debug/
 Release/ 
