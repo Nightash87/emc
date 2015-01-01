@@ -81,12 +81,14 @@
     <LibraryPath>$(LibraryPath);$(OutDir);</LibraryPath>
     <SourcePath>$(SourcePath);</SourcePath>
     <ExcludePath>$(ExcludePath)</ExcludePath>
+    <OutDir>../win_bin/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>../win_bin_r/</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -154,6 +156,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="item3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
