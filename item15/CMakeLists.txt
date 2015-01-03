@@ -1,0 +1,14 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+PROJECT(item15)
+
+
+
+INCLUDE_DIRECTORIES(
+    ${/usr/local/include}
+)
+
+ADD_EXECUTABLE(item15 item15.cpp)
+
+
+
+
