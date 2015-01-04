@@ -17,6 +17,9 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 
-add_subdirectory(item1 )
-add_subdirectory(item3 )
-add_subdirectory(item5 )
+add_subdirectory(item1)
+add_subdirectory(item3)
+add_subdirectory(item5)
+add_subdirectory(item7)
+add_subdirectory(item15)
+add_subdirectory(item18)

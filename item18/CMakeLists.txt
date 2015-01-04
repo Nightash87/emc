@@ -1,5 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-PROJECT(item1)
+PROJECT(item15)
 
 
 
@@ -7,6 +7,8 @@ INCLUDE_DIRECTORIES(
     ${/usr/local/include}
 )
 
-ADD_EXECUTABLE(item1 item1.cpp)
+ADD_EXECUTABLE(item18 item18.cpp)
+
+
 
 
