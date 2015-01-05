@@ -24,7 +24,8 @@ private:
 	};
 	
 	using ImplUptr = std::unique_ptr < FooImpl , FooImplDeleter > ;
-
+	using ImplSptr = std::shared_ptr < FooImpl > ;
 private:
 	ImplUptr ImplUptr_;
+	ImplSptr ImplSptr_;
 };
