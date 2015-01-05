@@ -4,6 +4,7 @@
 #include <cassert>
 #include <boost/type_index.hpp>
 #include <type_traits>
+#include "../shared/widget.hpp"
 
 using std::cout;
 using std::endl;
@@ -26,6 +27,8 @@ GetValueByRef(Container& c, Index i)
 	return c[i];
 }
 
+using MyWidget = Widget < int > ;
+
 int main(void)
 {
 	auto v = GetValue( std::vector<int>{1,2,3,4,5} , 4 );
@@ -38,6 +41,11 @@ int main(void)
 	cout << "refV:	" << type_id_with_cvr<decltype(refV)>().pretty_name() << '\n';
 	cout<<"size of int*:"<<sizeof(int *)<<'\n';
 
+	cout << " ---------------testing decltype------------\n\n";
+	MyWidget mw(3);
+	const MyWidget& cw = mw;
+	auto mw2 = cw;
+	cout << "delctype of (mw2) <====\"×¢ÒâÀ¨ºÅ\"	" << type_id_with_cvr<decltype((mw2))>().pretty_name() << '\n';
 	return 0;
 }
 
