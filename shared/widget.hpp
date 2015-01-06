@@ -23,11 +23,13 @@ public:
 
 	Widget( const Widget& w )
 	{
+		t_ = w.t_;
 		std::cout<<__FUNCTION__ <<'\n';
 	}
 
 	Widget( Widget&& rW )
 	{
+		t_ = std::move(rW.t_);
 		std::cout<<__FUNCTION__ <<'\n';
 	}
 
@@ -36,7 +38,7 @@ public:
 		std::cout<<__FUNCTION__ <<'\n';
 	}
 
-	Widget& operator=(const Widget&& rhs )
+	Widget& operator=( Widget&& rhs )
 	{
 		std::cout<<__FUNCTION__ <<'\n';
 	}
