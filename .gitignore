@@ -14,3 +14,4 @@ Makefile
 
 Debug/
 Release/ 
+x64/
