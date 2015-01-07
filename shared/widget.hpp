@@ -28,29 +28,34 @@ public:
 
 	Widget( const Widget& w )
 	{
-		++arr_statics_[FT_COPY_CTOR];
 		t_ = w.t_;
+		arr_statics_ = w.arr_statics_;
+		++arr_statics_[FT_COPY_CTOR];
 		std::cout<<__FUNCTION__ <<"copy ctor"<<'\n';
 	}
 
 	Widget( Widget&& rW )
 	{
-		++arr_statics_[FT_MOVE_CTOR];
+		
 		t_ = std::move(rW.t_);
+		arr_statics_ = std::move(rW.arr_statics_);
+		++arr_statics_[FT_MOVE_CTOR];
 		std::cout<<__FUNCTION__ << "move ctor"<<'\n';
 	}
 
 	Widget& operator=(const Widget& rhs )
 	{
-		++arr_statics_[FT_COPY_ASS];
+		arr_statics_ = rhs.arr_statics_;
 		t_ = rhs.t_;
+		++arr_statics_[FT_COPY_ASS];
 		std::cout<<__FUNCTION__ <<"copy assign"<<'\n';
 	}
 
 	Widget& operator=( Widget&& rhs )
 	{
-		++arr_statics_[FT_MOVE_ASS];
 		t_ = std::move(rhs.t_);
+		arr_statics_ = std::move(rW.arr_statics_);
+		++arr_statics_[FT_MOVE_ASS];
 		std::cout<<__FUNCTION__ <<"move assign"<<'\n';
 	}
 
