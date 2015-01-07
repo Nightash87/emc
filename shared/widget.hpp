@@ -72,10 +72,10 @@ public:
 
 	void Report() const
 	{
-		cout << "\nReport:";
+		cout << "\nReport:\n";
 		for (int i = 0; i < FT_NUM; i++)
 		{
-			cout << FunTypeDesc(static_cast<FUN_TYPE>(i)) << " :" << arr_statics_[i] << endl;
+			cout << FunTypeDesc(static_cast<FUN_TYPE>(i)) << ":" << arr_statics_[i] << endl;
 		}
 	}
 private:
@@ -95,7 +95,7 @@ private:
 		static std::string arr[] = 
 		{
 			
-				"FT_CTOR = 0",
+				"FT_CTOR",
 				"FT_COPY_CTOR",
 				"FT_COPY_ASS",
 				"FT_MOVE_CTOR",
