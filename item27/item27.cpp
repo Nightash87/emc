@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <type_traits>
+#include <boost/lexical_cast.hpp>
 
 using std::cout;
 using std::endl;
@@ -39,7 +40,7 @@ public:
 	explicit PersonV2( std::string str )
 		: name_(std::move(str)){}
 	explicit PersonV2( int idx ) 
-		: name_(std::to_string(idx)){}
+		: name_(boost::lexical_cast<std::string>(idx)){}
 
 	PersonV2(const PersonV2& rhs) = default;
 
@@ -68,7 +69,7 @@ public:
 	}
 
 	explicit PersonV3(int idx)
-		: name_(std::to_string(idx))
+		: name_(boost::lexical_cast<std::string>(idx))
 	{
 	}
 

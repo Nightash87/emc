@@ -54,7 +54,7 @@ public:
 	Widget& operator=( Widget&& rhs )
 	{
 		t_ = std::move(rhs.t_);
-		arr_statics_ = std::move(rW.arr_statics_);
+		arr_statics_ = std::move(rhs.arr_statics_);
 		++arr_statics_[FT_MOVE_ASS];
 		std::cout<<__FUNCTION__ <<"move assign"<<'\n';
 	}
@@ -72,10 +72,10 @@ public:
 
 	void Report() const
 	{
-		cout << "\nReport:\n";
+		std::cout << "\nReport:\n";
 		for (int i = 0; i < FT_NUM; i++)
 		{
-			cout << FunTypeDesc(static_cast<FUN_TYPE>(i)) << ":" << arr_statics_[i] << endl;
+			std::cout << FunTypeDesc(static_cast<FUN_TYPE>(i)) << ":" << arr_statics_[i] << std::endl;
 		}
 	}
 private:

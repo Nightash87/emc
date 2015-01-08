@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <boost/lexical_cast.hpp>
 
 using std::cout;
 using std::endl;
@@ -21,12 +22,12 @@ public:
 		cout << "universal ctor:" << name_ << endl;
 	}
 
+	// cygwin ²»Ö§³Ö std::to_string ...
 	explicit Person( int idx ) 
-	: name_(std::to_string(idx)){}
+	: name_(boost::lexical_cast<std::string>(idx)){}
 
 	Person(const Person& rhs) = default;
-	// Person(Person&& rhs) = default;
-
+	
 private:
 	std::string name_;
 };
