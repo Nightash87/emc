@@ -4,6 +4,10 @@
 #include <array>
 #include <string>
 
+#ifndef _NOEXCEPT
+#define _NOEXCEPT noexcept
+#endif // !_NOEXCEPT
+
 template<typename T>
 class Widget
 {
@@ -11,13 +15,13 @@ public:
 	Widget()
 	{
 		++arr_statics_[FT_CTOR];
-		std::cout<<__FUNCTION__ <<'\n';
+		std::cout << "Widget()" << '\n';
 	}
 
 	explicit Widget( const T& t ):t_(t) 
 	{
 		++arr_statics_[FT_CTOR];
-		std::cout<<__FUNCTION__ <<" : "<< t_ << "\n";
+		std::cout<<"Widget(" << t_ <<")\n";
 	}
 
 	~Widget()
@@ -26,21 +30,18 @@ public:
 		std::cout<<__FUNCTION__ <<'\n';
 	}
 
-	Widget( const Widget& w )
+	Widget(const Widget& w) :t_(w.t_), arr_statics_(w.arr_statics_)
 	{
-		t_ = w.t_;
-		arr_statics_ = w.arr_statics_;
 		++arr_statics_[FT_COPY_CTOR];
-		std::cout<<__FUNCTION__ <<"copy ctor"<<'\n';
+		std::cout<<"Widget(const Widget& w)"<<'\n';
 	}
 
-	Widget( Widget&& rW )
+	Widget(Widget&& rW) _NOEXCEPT :
+	t_(std::move(rW.t_)),
+	arr_statics_(std::move(rW.arr_statics_))
 	{
-		
-		t_ = std::move(rW.t_);
-		arr_statics_ = std::move(rW.arr_statics_);
 		++arr_statics_[FT_MOVE_CTOR];
-		std::cout<<__FUNCTION__ << "move ctor"<<'\n';
+		std::cout<<"Widget(Widget&& rW)"<<'\n';
 	}
 
 	Widget& operator=(const Widget& rhs )
@@ -48,15 +49,17 @@ public:
 		arr_statics_ = rhs.arr_statics_;
 		t_ = rhs.t_;
 		++arr_statics_[FT_COPY_ASS];
-		std::cout<<__FUNCTION__ <<"copy assign"<<'\n';
+		std::cout<<"Widget& operator=(const Widget& rhs )"<<'\n';
+		return *this;
 	}
 
-	Widget& operator=( Widget&& rhs )
+	Widget& operator=(Widget&& rhs) _NOEXCEPT
 	{
 		t_ = std::move(rhs.t_);
 		arr_statics_ = std::move(rhs.arr_statics_);
 		++arr_statics_[FT_MOVE_ASS];
-		std::cout<<__FUNCTION__ <<"move assign"<<'\n';
+		std::cout<<"Widget& operator=(Widget&& rhs)"<<'\n';
+		return *this;
 	}
 
 	template<typename arg>
