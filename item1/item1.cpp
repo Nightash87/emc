@@ -72,14 +72,6 @@ int main(void)
 	FUN_POINTER("world");
 	FUN_POINTER(pointer_str);
 	FUN_POINTER(const_pointer_str);
-
-	std::cout << "Boost version: " << std::hex
-		<< ((BOOST_VERSION >> 20) & 0xF)
-		<< "."
-		<< ((BOOST_VERSION >> 8) & 0xFFF)
-		<< "."
-		<< (BOOST_VERSION & 0xFF)
-		<< std::endl;
     return 0;
 }
 
