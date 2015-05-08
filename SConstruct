@@ -1,44 +1,32 @@
 import glob
 import os
 import re
-
+import scons_opt
 #get the mode flag from the command line
 #default to 'release' if the user didn't specify
 
-print ARGUMENTS
 mode = ARGUMENTS.get('Release',0)
 #check if the user has been naughty: only 'debug' or 'release' allowed
 
-mymode = 'Debug' if mode == 0 else 'Release'
+configMode = 'Debug' if mode == 0 else 'Release'
 
 
 #tell the user what we're doing
-print '**** Compiling in ' + mymode + ' mode...'
+print '**** Compiling in ' + configMode + ' mode...'
 
-opt = {}
 env = Environment()
-if env['PLATFORM'] == 'win32':
-	opt['CPPPATH'] = os.environ['BOOST_ROOT']
-	opt['CCPDBFLAGS'] = ['${(PDB and "/Zi /Fd%s" % File(PDB)) or ""}']
-	opt['CCFLAGS'] = ['-DWIN32']
+print 'construting PLATFORM:',env['PLATFORM']
+opt = scons_opt.GetOpt(env['PLATFORM'],configMode)
 
-	if mymode == 'Debug':
-		opt['CCFLAGS'] += ['-W3', '-EHsc', '-D_DEBUG', '/MDd']
-	else:
-		opt['CCFLAGS'] += ['-O2', '-EHsc', '-DNDEBUG', '/MD']
-else:
-	opt['CPPPATH'] = '/usr/local/include'
-	opt['CCFLAGS'] = ['-Wall', '-m64', '-std=c++11']
 
 def UpdateOpt(env,opt):
 	for k , v in opt.iteritems():
 		env[k] = v
 
-
 UpdateOpt(env,opt)
 
 
-buildroot = './' + mymode   #holds the root of the build directory tree
+buildroot = './' + configMode   #holds the root of the build directory tree
 
 
 #-------
