@@ -7,11 +7,12 @@
 *.vcxproj.user
 *.out
 *.cmake
+*.dblite
 err.log
 CMakeFiles/
 CMakeCache.txt
 Makefile
 
 Debug/
-Release/ 
+Release/
 x64/
